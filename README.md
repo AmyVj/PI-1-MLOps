@@ -66,46 +66,23 @@ Específicamente para el modelo de recomendación, se construyó un dataframe es
 Dos modelos poderosos toman el escenario: ítem-ítem y usuario-juego. Con el poder del filtrado colaborativo, traemos a la vida recomendaciones personalizadas que deleitarán a nuestros usuarios.
 
 ## Desarrollo de API: La Puerta a la Diversión
-### Las funciones usadas para las APIs se hicieron con las siguientes: 
+Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
 
-1. **userdata(user_id):**
-   - Parámetros: user_id (identificador de usuario).
-   - Devuelve:
-     - Cantidad de dinero gastado por el usuario.
-     - Porcentaje de recomendaciones realizadas sobre la cantidad total de reviews analizadas.
-     - Cantidad de items consumidos por el usuario.
+* userdata: Esta función tiene por parámentro 'user_id' y devulve la cantidad de dinero gastado por el usuario, el porcentaje de recomendaciones que realizó sobre la cantidad de reviews que se analizan y la cantidad de items que consume el mismo.
 
-2. **countreviews(start_date, end_date):**
-   - Parámetros: start_date (fecha de inicio), end_date (fecha de fin).
-   - Devuelve:
-     - Cantidad de usuarios que dejaron reviews entre las fechas proporcionadas.
-     - Porcentaje de recomendaciones positivas (True) hechas por esos usuarios.
+* countreviews: En esta función se ingresan dos fechas entre las que se quiere hacer una consulta y devuelve la cantidad de usuarios que realizaron reviews entre dichas fechas y el porcentaje de las recomendaciones positivas (True) que los mismos hicieron.
 
-3. **genre(videojuego):**
-   - Parámetros: videojuego (género de videojuego).
-   - Devuelve: Puesto del género en un ranking basado en la cantidad de horas jugadas para cada uno.
+* genre: Esta función recibe como parámetro un género de videojuego y devuelve el puesto en el que se encuentra dicho género sobre un ranking de los mismos analizando la cantidad de horas jugadas para cada uno.
 
-4. **userforgenre(videojuego):**
-   - Parámetros: videojuego (género de videojuego).
-   - Devuelve: Top 5 de usuarios con más horas de juego en el género ingresado, con el id del usuario y el url de su perfil.
+* userforgenre: Esta función recibe como parámetro el género de un videojuego y devuelve el top 5 de los usuarios con más horas de juego en el género ingresado, indicando el id del usuario y el url de su perfil.
 
-5. **developer(developer):**
-   - Parámetros: developer (empresa desarrolladora del juego).
-   - Devuelve:
-     - Cantidad de items desarrollados por la empresa.
-     - Porcentaje de contenido gratuito por año sobre el total desarrollado.
+* developer: Esta función recibe como parámetro 'developer', que es la empresa desarrolladora del juego, y devuelve la cantidad de items que desarrolla dicha empresa y el porcentaje de contenido Free por año por sobre el total que desarrolla.
 
-6. **sentiment_analysis(year):**
-   - Parámetros: year (año de lanzamiento del juego).
-   - Devuelve: Lista con la cantidad de registros de reseñas de usuarios categorizados con análisis de sentimiento (Negativo, Neutral y Positivo) para ese año.
+* sentiment_analysis: Esta función recibe como parámetro el año de lanzamiento de un juego y según ese año devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento, como Negativo, Neutral y Positivo.
 
-7. **recomendacion_juego(juego):**
-   - Parámetros: juego (nombre de un juego).
-   - Devuelve: Lista con 5 juegos recomendados similares al ingresado.
+* recomendacion_juego: Esta función recibe como parámetro el nombre de un juego y devuelve una lista con 5 juegos recomendados similares al ingresado.
 
-8. **recomendacion_usuario(user_id):**
-   - Parámetros: user_id (identificador de usuario).
-   - Devuelve: Lista con 5 juegos recomendados para dicho usuario, teniendo en cuenta las similitudes entre los usuarios.
+* recomendacion_usuario: Esta función recibe como parámetro el id de un usuario y devuelve una lista con 5 juegos recomendados para dicho usuario teniendo en cuenta las similitudes entre los usuarios.
 
 **Nota:**
 - Las funciones recomendacion_juego y recomendacion_usuario están disponibles en la API, pero solo recomendacion_juego se pudo desplegar en Render debido a limitaciones de almacenamiento. Para utilizar recomendacion_usuario, se debe ejecutar la API localmente.
